@@ -1,17 +1,22 @@
 import React from "react";
+import { Route, Link } from 'react-router-dom';
 import './App.css';
+import Home from "./Components/Home";
+import PizzaForm from "./Components/PizzaForm";
 
 const App = () => {
   return (
-    <div>    
+    <div>
       <header>
         <h1>Lambda Eats</h1>
-        <button id="home">Home</button>
+        <Link to="/"><button id="home">Home</button></Link>
       </header>
-      <div className="heroImage">
-        <h2>Your favorite food, delivered while coding</h2>
-        <button className="pizzaFormBtn">Pizza?</button>
-      </div>
+    <Route exact path="/">
+      <Home />
+    </Route>
+    <Route exact path="/pizza-form">
+      <PizzaForm />
+    </Route>
     </div>
   );
 };
