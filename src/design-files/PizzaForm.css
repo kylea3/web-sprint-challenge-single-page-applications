@@ -1,0 +1,91 @@
+#header {
+    border: 3px solid black;
+}
+
+h2 {
+    font-size: .75rem;
+    text-align: center;
+}
+
+#heroImg {
+    border: 3px solid black;
+    height: 60vh;
+    border-top: none;
+}
+
+
+h3 {
+    font-size: 1rem;
+    margin-left: 15px;
+}
+
+.choices {
+    background-color: lightgray;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+h4 {
+    margin: 5px 0px 0px 15px;
+}
+
+.choices p {
+    margin: 5px 0px 5px 15px;
+    font-size: .75rem;
+    font-weight: bold;
+}
+
+.optionsTitle {
+    margin: 0px 0px 0px 10px;
+    font-size: .8rem;
+    font-weight: bold;
+}
+
+.sauce {
+    margin-top: 0px;
+    vertical-align: middle;
+}
+
+.toppingsDiv {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.toppingsDiv .choiceDiv {
+    margin-right: 15%;
+}
+
+.choiceDiv {
+    margin: 10px 0px 10px 15px;
+    display:flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.choiceOptions {
+    margin: 2px 0px 0px 0px;
+    width: 100%;
+}
+
+#specialInst {
+    width: 100%;
+}
+
+.submitInfo {
+    border: 2px solid black;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#submitBtn {
+    width: 75vw;
+    padding: 3px 0px 3px 0px;
+    margin-left: 10px;
+    text-align: left;
+}

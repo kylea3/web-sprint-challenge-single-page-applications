@@ -9,7 +9,7 @@ const App = () => {
     <div>
       <header>
         <h1>Lambda Eats</h1>
-        <Link to="/"><button id="home">Home</button></Link>
+        <Link id='home' to="/">Home</Link>
       </header>
     <Route exact path="/">
       <Home />

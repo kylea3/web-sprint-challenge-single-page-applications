@@ -33,3 +33,15 @@ header {
     color: rgb(0, 0, 0);
     font-weight: bold;
   }
+
+  #order-pizza:hover {
+    background-color: black;
+    color:rgb(255, 255, 255);
+  }
+
+  select {
+    margin: 2px 0px 10px 15px;
+    width: 33vw;
+    border: 2px solid black;
+    border-radius: 2px;
+  }
