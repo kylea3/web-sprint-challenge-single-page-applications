@@ -7,7 +7,7 @@ const Home = () => {
 
     const history = useHistory();
     const routeToPizzaForm = () => {
-        history.push('/pizza-form')
+        history.push('/pizza')
     }
     return(   
       <div className="heroImage">
