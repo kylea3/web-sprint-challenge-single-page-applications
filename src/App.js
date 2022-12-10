@@ -21,8 +21,9 @@ const App = () => {
     roastedGarlic: false,
     artichokeHearts: false,
     threeCheese: false,
-    pienapple: false,
+    pineapple: false,
     extraCheese: false,
+    substitute: false,
     special: ''
   }  
   const initialFormErrors = {
@@ -61,6 +62,7 @@ const App = () => {
     threeCheese: false,
     pienapple: false,
     extraCheese: false,
+    substitute: '',
     special: ''
     }
   }
@@ -75,7 +77,14 @@ const App = () => {
       <Home />
     </Route>
     <Route exact path="/pizza">
-      <PizzaForm />
+      <PizzaForm
+      submit={onSubmit}
+      update={onUpdate}
+      disabled={disabled}
+      errors={formErrors}
+      values={formValues}
+
+      />
     </Route>
     </div>
   );
