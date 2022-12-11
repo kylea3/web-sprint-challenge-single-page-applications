@@ -145,7 +145,7 @@ const PizzaForm = (props) => {
                 </label>
                 <div className="choiceDiv">
                     <div className="choiceOptions">
-                        <input type='text' id="specialInst" value={props.values.instructions} name='special' onChange={onChange} />
+                        <input type='text' id="specialInst" value={props.values.instructions} name='special-text' onChange={onChange} />
                         <label className='optionsTitle'></label>
                     </div>
                 </div>
