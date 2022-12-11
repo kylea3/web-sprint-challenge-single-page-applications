@@ -87,9 +87,20 @@ h4 {
     align-items: center;
 }
 
+#pizzasOrdered {
+    margin-left: 15px;
+}
+
 #order-button {
     width: 75vw;
     padding: 3px 0px 3px 0px;
     margin-left: 10px;
     text-align: left;
+}
+
+.errors {
+    color: red;
+    display: inline-block;
+    margin: 0px 0px 0px 10px;
+    font-size: .8rem;
 }

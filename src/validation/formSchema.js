@@ -8,7 +8,7 @@ const formSchema = yup.object().shape({
         .min(3, 'Name must be at least 3 characters long!'),
     size: yup
         .string()
-        .oneOf(["small", "medium", "large"], "Size is required!"),
+        .oneOf(["Small", "Medium", "Large"], "Size is required!"),
     sauce: yup.string()
     .oneOf(["originalRed", "garlicRanch", 'bbqSauce', 'spinachAlfredo'], 'Sauce is required!'),
     pepperoni: yup.boolean(),
@@ -26,9 +26,9 @@ const formSchema = yup.object().shape({
     pineapple: yup.boolean(),
     extraCheese: yup.boolean(),
     substitute: yup.boolean(),
-    special: yup
+    pizzasOrdered: yup
         .string()
-        .trim()
+        .oneOf(['1','2','3','4','5','6','7','8','9'], "Pizzas to order must be a number from 1-9! If you are ordering more than 9 pizzas, call in your order.")
     
 })
 

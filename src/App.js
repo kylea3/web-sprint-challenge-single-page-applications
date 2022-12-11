@@ -4,9 +4,10 @@ import './App.css';
 import axios from "axios";
 import Home from "./Components/Home";
 import PizzaForm from "./Components/PizzaForm";
+import formSchema from "./validation/formSchema";
+import * as yup from 'yup';
 
 const App = () => {
-  const initialNumber = 1;
   const initialFormValues = {
     name: '',
     size: '',
@@ -26,13 +27,14 @@ const App = () => {
     extraCheese: false,
     substitute: false,
     special: '',
-    number: 1
+    pizzasOrdered: '1'
   }  
   const initialFormErrors = {
-    size: '',
-    sauce: '',
+    size: 'Pick a size!',
+    sauce: 'Pick a sauce!',
     toppings: '',
-    instructions: ''
+    name:'Name is required for pickup!',
+    pizzasOrdered: ''
   }
   const initialPizza = [];
   const initialDisabled = true;
@@ -42,36 +44,56 @@ const App = () => {
   const [formValues, setFormValues] = useState(initialFormValues);
   const [formErrors, setFormErrors] = useState(initialFormErrors);
   const [disabled, setDisabled] = useState(initialDisabled);
-  const [number, setNumber] = useState(initialNumber)
 
-  const onUpdate = (name, value) => {
-    setFormValues(  {...formValues, [name]: value });
-  }
+  useEffect(() => {
+    formSchema.isValid(formValues).then(valid =>setDisabled(!valid))
+  }, [formValues])
 
   const onSubmit = () => {
     const newOrder = {
-    name: '',
-    size: '',
-    pepperoni: false,
-    sausage: false,
-    canadianBacon: false,
-    italianSausage: false,
-    grilledChicken: false,
-    onion: false,
-    greenPepper: false,
-    dicedTomatoes: false,
-    blackOlives: false,
-    roastedGarlic: false,
-    artichokeHearts: false,
-    threeCheese: false,
-    pineapple: false,
-    extraCheese: false,
-    substitute: '',
-    special: '',
-    number: 1   
+    name: formValues.name.trim(),
+    size: formValues.size.trim(),
+    pepperoni: !!formValues.pepperoni,
+    sausage: !!formValues.sausage,
+    canadianBacon: !!formValues.canadianBacon,
+    italianSausage: !!formValues.italianSausage,
+    grilledChicken: !!formValues.grilledChicken,
+    onion: !!formValues.onion,
+    greenPepper: !!formValues.greenPepper,
+    dicedTomatoes: !!formValues.dicedTomatoes,
+    blackOlives: !!formValues.blackOlives,
+    roastedGarlic: !!formValues.roastedGarlic,
+    artichokeHearts: !!formValues.artichokeHearts,
+    threeCheese: !!formValues.threeCheese,
+    pineapple: !!formValues.pineapple,
+    extraCheese: !!formValues.extraCheese,
+    substitute: formValues.substitute,
+    special: formValues.special,
+    pizzasOrdered: formValues.pizzasOrdered   
   }
+  axios.post("https://reqres.in/api/orders", newOrder)
+    .then(res => {
+      setPizza(res.data);
+    })
+    .catch(err => console.error(err))
+    .finally(() => {
+      setFormValues(initialFormValues)
+      setFormErrors(initialFormErrors)
+    })
+
   }
 
+  const validate = (name, value) => {
+    yup.reach(formSchema, name)
+    .validate(value)
+    .then(() => setFormErrors({ ...formErrors, [name]: "" }))
+    .catch(err => setFormErrors({ ...formErrors, [name]: err.errors[0]}))
+  }
+
+  const onUpdate = (name, value) => {
+    validate(name, value);
+    setFormValues({ ...formValues, [name]: value })
+  }
   return (
     <div>
       <header>
@@ -88,7 +110,6 @@ const App = () => {
       disabled={disabled}
       errors={formErrors}
       values={formValues}
-      setNumber={setNumber}
 
       />
     </Route>

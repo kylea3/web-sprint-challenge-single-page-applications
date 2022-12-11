@@ -21,34 +21,37 @@ const PizzaForm = (props) => {
             <div id="pizzaBuild">
                 <h3>Build Your Own Pizza</h3>
             </div>
-            <form id="pizza-form">
+            <form id="pizza-form" onSubmit={onSubmit}>
             <label className="choices">
                 <h4>Full Name</h4>
                 <p>Must use this name to pick up the pizza!</p>
             </label>
             <input type='text' placeholder="Name on Order" id="name-input" value={props.values.name} name='name' onChange={onChange} />
+            <p className="errors">{props.errors.name}</p>    
                 <label className="choices">
                     <h4>Choice of Size</h4>
                     <p>Required</p>
                 </label>
                 <select id="size-dropdown" value={props.values.size} name="size" onChange={onChange}>
                     <option value="">Select</option>
-                    <option value="small">Small</option>
+                    <option value="Small">Small</option>
                     <option value="Medium">Medium</option>
                     <option value="Large">Large</option>
                 </select>
+                <p className="errors">{props.errors.size}</p>
                 <label className="choices">
                     <h4>Choice of Sauce</h4>
                     <p>Required</p>
                 </label>
                 <div className="choiceDiv">
+                <p className="errors">{props.errors.sauce}</p>
                     <div className="choiceOptions">
                         <input type='radio' className="sauce" value='originalRed' name='sauce' onChange={onChange} checked={props.values.sauce === 'originalRed'} />
                         <label className='optionsTitle'>Original Red</label>
                     </div>
                     <div className="choiceOptions">
                         <input type='radio' className="sauce" value='garlicRanch' name='sauce' onChange={onChange} checked={props.values.sauce === 'garlicRanch'} />
-                        <label className='optionsTitle'>Garlic Ranch</label>
+                        <label className='optionsTitle'>Garlic Ranch </label>
                     </div>
                     <div className="choiceOptions">
                         <input type='radio' className="sauce" value='bbqSauce' name='sauce' onChange={onChange} checked={props.values.sauce === 'bbqSauce'} />
@@ -59,9 +62,10 @@ const PizzaForm = (props) => {
                         <label className='optionsTitle'>Spinach Alfredo</label>
                     </div>
                 </div>
+                
                 <label className="choices">
                     <h4>Add Toppings</h4>
-                    <p>Choose up to 10.</p>
+                    <p>Choose your toppings!</p>
                 </label>
                 <div className="toppingsDiv">
                     <div className="choiceDiv">
@@ -146,7 +150,11 @@ const PizzaForm = (props) => {
                     </div>
                 </div>
                 <div className="submitInfo">
-                    <input type="number" min="1" max="10" step="1" onChange={(e) => props.setNumber(e.target.valueAsNumber)} />
+                    <div id="pizzasOrdered">
+                    <label className="optionsTitle">Number of Pizzas</label>
+                    <input type="text" value={props.values.pizzasOrdered} name='pizzasOrdered' onChange={onChange} />
+                    <p className="errors">{props.errors.pizzasOrdered}</p>
+                    </div>
                     <button disabled={props.disabled} id='order-button'>Add to Order</button>
                 </div>
             </form>
