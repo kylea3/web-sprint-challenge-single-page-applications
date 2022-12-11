@@ -19,6 +19,10 @@ h3 {
     margin-left: 15px;
 }
 
+#name-input {
+    margin: 10px 0px 10px 15px;
+}
+
 .choices {
     background-color: lightgray;
     display: flex;

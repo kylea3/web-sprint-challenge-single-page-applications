@@ -6,6 +6,7 @@ import Home from "./Components/Home";
 import PizzaForm from "./Components/PizzaForm";
 
 const App = () => {
+  const initialNumber = 1;
   const initialFormValues = {
     name: '',
     size: '',
@@ -24,7 +25,8 @@ const App = () => {
     pineapple: false,
     extraCheese: false,
     substitute: false,
-    special: ''
+    special: '',
+    number: 1
   }  
   const initialFormErrors = {
     size: '',
@@ -34,11 +36,13 @@ const App = () => {
   }
   const initialPizza = [];
   const initialDisabled = true;
+  
 
   const [pizza, setPizza] = useState(initialPizza);
   const [formValues, setFormValues] = useState(initialFormValues);
   const [formErrors, setFormErrors] = useState(initialFormErrors);
   const [disabled, setDisabled] = useState(initialDisabled);
+  const [number, setNumber] = useState(initialNumber)
 
   const onUpdate = (name, value) => {
     setFormValues(  {...formValues, [name]: value });
@@ -60,11 +64,12 @@ const App = () => {
     roastedGarlic: false,
     artichokeHearts: false,
     threeCheese: false,
-    pienapple: false,
+    pineapple: false,
     extraCheese: false,
     substitute: '',
-    special: ''
-    }
+    special: '',
+    number: 1   
+  }
   }
 
   return (
@@ -83,6 +88,7 @@ const App = () => {
       disabled={disabled}
       errors={formErrors}
       values={formValues}
+      setNumber={setNumber}
 
       />
     </Route>

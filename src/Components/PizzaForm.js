@@ -22,6 +22,11 @@ const PizzaForm = (props) => {
                 <h3>Build Your Own Pizza</h3>
             </div>
             <form id="pizza-form">
+            <label className="choices">
+                <h4>Full Name</h4>
+                <p>Must use this name to pick up the pizza!</p>
+            </label>
+            <input type='text' placeholder="Name on Order" id="name-input" value={props.values.name} name='name' onChange={onChange} />
                 <label className="choices">
                     <h4>Choice of Size</h4>
                     <p>Required</p>
@@ -141,7 +146,7 @@ const PizzaForm = (props) => {
                     </div>
                 </div>
                 <div className="submitInfo">
-                    <input type="number" className="size-36" value="1" min="1" max="10" step="1" />
+                    <input type="number" min="1" max="10" step="1" onChange={(e) => props.setNumber(e.target.valueAsNumber)} />
                     <button disabled={props.disabled} id='order-button'>Add to Order</button>
                 </div>
             </form>
