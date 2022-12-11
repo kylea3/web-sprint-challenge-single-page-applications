@@ -145,8 +145,7 @@ const PizzaForm = (props) => {
                 </label>
                 <div className="choiceDiv">
                     <div className="choiceOptions">
-                        <input type='text' id="specialInst" value={props.values.instructions} name='special-text' onChange={onChange} />
-                        <label className='optionsTitle'></label>
+                        <input type='text' id="special-text" name="special" value={props.values.special} onChange={onChange} />
                     </div>
                 </div>
                 <div className="submitInfo">
@@ -156,6 +155,12 @@ const PizzaForm = (props) => {
                     <p className="errors">{props.errors.pizzasOrdered}</p>
                     </div>
                     <button disabled={props.disabled} id='order-button'>Add to Order</button>
+                    <div>
+                        {props.pizza.name}
+                        {props.pizza.size}
+                        {props.pizza.instructions}
+                        
+                    </div>
                 </div>
             </form>
         </div>

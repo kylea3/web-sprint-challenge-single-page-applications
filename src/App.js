@@ -110,6 +110,7 @@ const App = () => {
       disabled={disabled}
       errors={formErrors}
       values={formValues}
+      pizza={pizza}
 
       />
     </Route>

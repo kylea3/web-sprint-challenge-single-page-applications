@@ -26,6 +26,7 @@ const formSchema = yup.object().shape({
     pineapple: yup.boolean(),
     extraCheese: yup.boolean(),
     substitute: yup.boolean(),
+    special: yup.string(),
     pizzasOrdered: yup
         .string()
         .oneOf(['1','2','3','4','5','6','7','8','9'], "Pizzas to order must be a number from 1-9! If you are ordering more than 9 pizzas, call in your order.")
